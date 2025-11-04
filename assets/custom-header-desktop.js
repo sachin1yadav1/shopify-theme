@@ -24,3 +24,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* Custom Desktop Header — open megamenu on hover for pointer devices */
+(function () {
+  const canHover = window.matchMedia('(hover: hover)').matches;
+
+  function bindHover(details) {
+    const summary = details.querySelector('summary');
+    if (!summary) return;
+
+    // Hover open/close
+    details.addEventListener('mouseenter', () => (details.open = true));
+    details.addEventListener('mouseleave', () => (details.open = false));
+
+    // Keyboard support: focus opens, leaving the component closes
+    summary.addEventListener('focus', () => (details.open = true));
+    details.addEventListener('focusout', (e) => {
+      const active = document.activeElement;
+      if (!details.contains(active)) details.open = false;
+    });
+  }
+
+  function onReady() {
+    if (!canHover) return; // keep click behavior on touch devices
+    document
+      .querySelectorAll('header-menu details.mega-menu')
+      .forEach(bindHover);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
+})();
