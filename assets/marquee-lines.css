@@ -1,0 +1,10 @@
+.marqueelines {display:flex;flex-direction:column;background: #C5F335;padding:1vw 0;overflow:hidden;}
+.marqueelines h2 {font-weight: 700;font-size: 5vw;font-family: 'Poppins', sans-serif;margin: 0;white-space: nowrap;position: relative;left: 100%;}
+.marqueelines h2:nth-child(1), .marqueelines h2:nth-child(3) {font-style: italic;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: black;color: transparent;opacity: 0.2;}
+.marqueelines h2:nth-child(2) {color: black;margin: -20px 0;}
+@media screen and (max-width: 750px){
+  .marqueelines h2 {font-size:10vw;}
+  .marqueelines h2:nth-child(1), .marqueelines h2:nth-child(3) {-webkit-text-stroke-width: 1px;}
+  .marqueelines h2:nth-child(2) {margin:-10px 0;}
+}
+

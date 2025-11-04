@@ -38,3 +38,6 @@
     justify-content: flex-end;
   }
 }
+
+
+.totalprice.magic-hide {display:flex !important;}

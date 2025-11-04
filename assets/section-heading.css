@@ -1,0 +1,6 @@
+.section-heading .title {position: relative;padding-left: 2rem;font-size: 30px;font-weight: 600;-webkit-font-smoothing: antialiased;letter-spacing: 0;}
+.section-heading .title:before {content: '';background: #B8DF2B;border-radius: 2px;position: absolute;left: 0;width: 4px;height: 100%;}
+
+@media screen and (max-width: 750px) {
+  .section-heading .title {padding-left: 1rem;font-size: 24px;margin-bottom: 2rem !important;margin-top: 0;}
+}

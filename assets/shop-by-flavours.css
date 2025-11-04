@@ -1,0 +1,22 @@
+.shop-by-flavours {padding: 30px 0;}
+.shop-by-flavours .page-width {position: relative;}
+.shop-by-flavours .sectionheading {margin:0px;color:#000;position: relative;padding-left: 2rem;font-size: 30px;font-weight: 600;-webkit-font-smoothing: antialiased;letter-spacing: 0;margin-bottom:30px;}
+.shop-by-flavours .sectionheading:before {content: '';background: #B8DF2B;border-radius: 2px;position: absolute;left: 0;width: 4px;height: 100%;}
+.shop-by-flavours .theflavourgrid {display: flex;flex-wrap: nowrap;column-gap: 3rem;justify-content: space-between;}
+.shop-by-flavours .theflavouritem {width:auto;flex: 0 0 auto;}
+.shop-by-flavours a {text-align: center;display:block;text-decoration:none;color:inherit;}
+.shop-by-flavours span {display: block;color: #000;text-align: center;line-height: 1.2;font-weight: 600;}
+.shop-by-flavours img {height: auto;width: 95%;margin: auto;max-width: 150px;}
+
+@media screen and (max-width: 749px) {
+  .shop-by-flavours .theflavourgrid {column-gap:1rem;overflow: scroll;}
+  .shop-by-flavours .theflavouritem {width: 20%;flex: 0 0 auto;}
+  .shop-by-flavours img {max-width:90px;}
+  .shop-by-flavours .sectionsheading {padding-left: 15px;}
+  .shop-by-flavours .sectionheading {font-size:24px;}
+  .shop-by-flavours {padding:15px 0;padding-bottom: 25px;}
+  .shop-by-flavours .theflavouritem:first-child {margin-left:15px}
+  .shop-by-flavours .page-width {padding:0px;}
+  .shop-by-flavours span {font-size:11px;}
+  
+}

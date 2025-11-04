@@ -1,0 +1,14 @@
+.cro-custom-slider {background: #231f1f;}
+.cro-custom-slider .slider {position: relative;overflow: hidden;width: 100%;margin: 0 auto;}
+.cro-custom-slider .slider-track {display: flex;transition: transform 0.5s ease;}
+.cro-custom-slider .slide {min-width: 100%;height: auto;}
+.cro-custom-slider .slide img {width: 100%;height: auto;vertical-align: middle;}
+.cro-custom-slider .arrow {position: absolute;top: 50%;transform: translateY(-50%);background: rgba(0,0,0,0.5);color: white;border: none;padding: 15px;cursor: pointer;z-index: 1;}
+.cro-custom-slider .prev { left: 0; }
+.cro-custom-slider .next { right: 0; }
+.cro-custom-slider .arrow::before {content: '';border: solid white;border-width: 0 3px 3px 0;display: inline-block;padding: 5px;}
+.cro-custom-slider .next::before { transform: rotate(-45deg); }
+.cro-custom-slider .prev::before { transform: rotate(135deg); }
+.cro-custom-slider .slider-dots {position: absolute;bottom: 2px;left: 50%;transform: translateX(-50%);display: flex;gap: 10px;z-index: 1;}
+.cro-custom-slider .slider-dot {opacity:.4;width: 45px;height: 10px;background: #fff;border-radius: 8px;border: 1px solid #000;cursor: pointer;transition: background 0.3s ease;box-shadow: #00000017 0 2px 1px, #00000017 0 4px 2px, #00000017 0 8px 4px, #00000017 0 16px 8px, #00000017 0 32px 16px;}
+.cro-custom-slider .slider-dot.active {opacity:1 !important;}
