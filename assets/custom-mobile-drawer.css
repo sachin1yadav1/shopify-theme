@@ -1,0 +1,11 @@
+.custom-mobile-drawer { padding: 1rem 1.5rem; }
+.custom-mobile-drawer .navitem { display: block; padding: 0.8rem 0; text-decoration: none; }
+.custom-mobile-drawer .mobiledropdown .menuaccordion { display: block; font-weight: 700; padding: 0.8rem 0; cursor: pointer; }
+.custom-mobile-drawer .panel { display: none; padding-top: 0.5rem; }
+.custom-mobile-drawer .innermenu { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.custom-mobile-drawer .singleitem a { display: block; text-decoration: none; color: inherit; }
+.custom-mobile-drawer .singleitem img { width: 100%; height: auto; border-radius: 8px; }
+.custom-mobile-drawer .singleitem span { display: block; margin-top: 0.4rem; font-size: 0.95rem; font-weight: 600; }
+@media screen and (min-width: 480px) {
+  .custom-mobile-drawer .innermenu { grid-template-columns: 1fr 1fr 1fr; }
+}
