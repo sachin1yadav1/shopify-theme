@@ -83,3 +83,208 @@
 .mega-menu__link:hover {
   text-decoration: underline;
 }
+
+
+/* Hide Dawn's default inline list so only custom nav shows */
+nav.header__inline-menu > ul.list-menu {
+  display: none !important;
+}
+
+/* Custom header desktop nav */
+.custom-header-desktop .parentlist {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-header-desktop .menulink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 12px 6px;
+}
+
+.custom-header-desktop .megamenu-hover {
+  position: relative;
+}
+
+.custom-header-desktop .megamenu-hover .megamenudropdown {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  min-width: 560px;
+  z-index: 30;
+  background: var(--color-foreground, #111);
+  color: var(--color-background, #fff);
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  display: none;
+}
+
+.custom-header-desktop .megamenu-hover.active .megamenudropdown {
+  display: block;
+}
+
+/* Inner grid items */
+.custom-header-desktop .innverdivs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+
+@media (max-width: 1200px) {
+  .custom-header-desktop .innverdivs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 990px) {
+  .custom-header-desktop .innverdivs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.custom-header-desktop .menuitmes a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.custom-header-desktop .imagebg {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f6f6f6;
+  margin-bottom: 8px;
+}
+
+.custom-header-desktop .imagebg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-header-desktop .menuitmes p {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Search box minimal styles */
+.customsearch .st-search-box {
+  width: 100%;
+  max-width: 420px;
+}
+.customsearch .st-search-input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #2a3a49;
+  padding: 8px 14px 8px 40px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+}
+
+
+/* Custom header desktop enhancements (color variables + responsive) */
+/* Uses Dawn color variables so schemes apply correctly */
+.custom-header-desktop .menulink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 12px 6px;
+}
+
+.custom-header-desktop .megamenu-hover {
+  position: relative;
+}
+
+.custom-header-desktop .megamenu-hover .megamenudropdown {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  min-width: 560px;
+  z-index: 30;
+  background: var(--color-foreground, #111);
+  color: var(--color-background, #fff);
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  display: none;
+}
+
+.custom-header-desktop .megamenu-hover.active .megamenudropdown {
+  display: block;
+}
+
+/* Inner grid items */
+.custom-header-desktop .innverdivs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+
+@media (max-width: 1200px) {
+  .custom-header-desktop .innverdivs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 990px) {
+  .custom-header-desktop .innverdivs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.custom-header-desktop .menuitmes a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.custom-header-desktop .imagebg {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f6f6f6;
+  margin-bottom: 8px;
+}
+
+.custom-header-desktop .imagebg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-header-desktop .menuitmes p {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Search box minimal styles */
+.customsearch .st-search-box {
+  width: 100%;
+  max-width: 420px;
+}
+.customsearch .st-search-input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #2a3a49;
+  padding: 8px 14px 8px 40px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+}

@@ -1,27 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const dropdowns = document.querySelectorAll('.custom-header-desktop .megamenu-hover');
-  dropdowns.forEach((dropdown) => {
-    const link = dropdown.querySelector('.dropdownmenulink');
-    let closeTimer;
+  const root = document.querySelector('.custom-header-desktop');
+  if (!root) return;
 
-    function open() {
-      clearTimeout(closeTimer);
-      dropdown.classList.add('active');
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  const items = root.querySelectorAll('.megamenu-hover');
+
+  items.forEach((item) => {
+    const link = item.querySelector('.dropdownmenulink');
+    const dropdown = item.querySelector('.megamenudropdown');
+    if (!dropdown) return;
+
+    const open = () => item.classList.add('active');
+    const close = () => item.classList.remove('active');
+    const toggle = () => item.classList.toggle('active');
+
+    if (canHover) {
+      item.addEventListener('mouseenter', open);
+      item.addEventListener('mouseleave', close);
     }
-
-    function scheduleClose() {
-      closeTimer = setTimeout(() => dropdown.classList.remove('active'), 150);
-    }
-
-    dropdown.addEventListener('mouseenter', open);
-    dropdown.addEventListener('mouseleave', scheduleClose);
 
     if (link) {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        dropdown.classList.toggle('active');
+        toggle();
       });
     }
+
+    document.addEventListener('click', (e) => {
+      if (!item.contains(e.target)) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
   });
 });
 
@@ -57,4 +68,49 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     onReady();
   }
+
+  // Desktop mega menu accessibility + hover/click handling
+  (function () {
+    const toggles = document.querySelectorAll('.custom-inline-menu .mega-toggle');
+    toggles.forEach((btn) => {
+      const menu = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!menu) return;
+  
+      const openMenu = () => {
+        btn.setAttribute('aria-expanded', 'true');
+        menu.hidden = false;
+      };
+      const closeMenu = () => {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.hidden = true;
+      };
+  
+      // Click to toggle
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
+  
+      // Hover open / mouseleave close
+      btn.addEventListener('mouseenter', openMenu);
+      menu.addEventListener('mouseleave', closeMenu);
+  
+      // Escape to close
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+      menu.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+          btn.focus();
+        }
+      });
+  
+      // Click outside closes
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && e.target !== btn) closeMenu();
+      });
+    });
+  })();
 })();

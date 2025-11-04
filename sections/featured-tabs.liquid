@@ -1,0 +1,61 @@
+{%- comment -%} Featured tabs section: three collections as tabs with product grids {%- endcomment -%}
+<section class="featured-tabs color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="featured-tabs__header">
+      {%- for block in section.blocks -%}
+        <button
+          class="featured-tabs__tab"
+          data-tab-target="tab-{{ block.id }}"
+          aria-controls="tab-{{ block.id }}"
+          aria-selected="{{ forloop.first }}"
+          role="tab"
+        >
+          {{- block.settings.collection.title | default: 'Collection' -}}
+        </button>
+      {%- endfor -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      <div
+        id="tab-{{ block.id }}"
+        class="featured-tabs__panel"
+        role="tabpanel"
+        aria-hidden="{{ forloop.first | negate }}"
+        {{ block.shopify_attributes }}
+        {% unless forloop.first %}hidden{% endunless %}
+      >
+        <div class="grid product-grid">
+          {%- if block.settings.collection != blank -%}
+            {%- for product in block.settings.collection.products limit: section.settings.products_count -%}
+              <div class="grid__item">
+                {% render 'card-product', card_product: product, media_size: 'square', show_secondary_image: true, show_vendor: false, show_rating: true, show_quick_add: true %}
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <p class="featured-tabs__empty">{{ 'sections.featured-collection.no_collection' | t }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+  <script src="{{ 'featured-tabs.js' | asset_url }}" defer="defer"></script>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "products_count", "label": "Products per tab", "min": 4, "max": 12, "step": 1, "default": 8 }
+  ],
+  "blocks": [
+    { "type": "collection", "name": "Tab", "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" }
+    ]}
+  ],
+  "max_blocks": 3,
+  "presets": [{ "name": "Featured Tabs", "category": "Custom" }]
+}
+{% endschema %}

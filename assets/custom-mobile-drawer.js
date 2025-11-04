@@ -35,6 +35,32 @@
     const custom = drawer.querySelector('.custom-mobile-drawer');
     if (!custom) return;
     initAccordion(custom);
+    // Mobile drawer accordion + focus management
+    (function () {
+      const drawer = document.getElementById('custom-mobile-drawer');
+      if (!drawer) return;
+  
+      drawer.querySelectorAll('.accordion__trigger').forEach((btn) => {
+        const panel = btn.nextElementSibling;
+        if (!panel) return;
+        btn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+  
+        btn.addEventListener('click', () => {
+          const open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          panel.hidden = open;
+        });
+  
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            btn.setAttribute('aria-expanded', 'false');
+            panel.hidden = true;
+            btn.focus();
+          }
+        });
+      });
+    })();
   }
 
   if (document.readyState === 'loading') {

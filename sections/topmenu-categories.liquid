@@ -1,0 +1,36 @@
+{%- comment -%} Top menu categories section matching data.txt’s 8-grid UI {%- endcomment -%}
+{{ 'topmenu-categories.css' | asset_url | stylesheet_tag }}
+<section class="topmenu-categories color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="topmenu-categories__grid">
+      {%- for block in section.blocks -%}
+        <a class="topmenu-categories__item" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 300 | image_tag: alt: block.settings.label, widths: '150,300' }}
+          {%- endif -%}
+          <span class="topmenu-categories__label">{{ block.settings.label }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Top Menu Categories",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "category", "name": "Category", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "label", "label": "Label" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ]}
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Top Menu Categories", "category": "Custom" }]
+}
+{% endschema %}
